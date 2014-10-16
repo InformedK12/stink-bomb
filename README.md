@@ -1,4 +1,4 @@
-# Stink::Bomb
+# StinkBomb
 
 TODO: Write a gem description
 
