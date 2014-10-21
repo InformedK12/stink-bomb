@@ -1,4 +1,4 @@
-module StinkBomb
+class StinkBomb
   class Bomb
     def initialize(date)
       date = Date.parse(date) if date.is_a?(String)

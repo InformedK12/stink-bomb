@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-module StinkBomb
+class StinkBomb
   describe Bomb, '#initialize' do
     it 'does nothing if today is given' do
       expect do

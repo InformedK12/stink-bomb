@@ -20,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+StinkBomb.create('January 20, 2001')
+```
 
 ## Contributing
 
