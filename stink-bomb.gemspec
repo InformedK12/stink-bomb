@@ -8,9 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = StinkBomb::VERSION
   spec.authors       = ['Holman Gao']
   spec.email         = ['holman@golmansax.com']
-  spec.summary       = 'TODO: Write a short summary. Required.'
-  spec.description   = 'TODO: Write a longer description. Optional.'
-  spec.homepage      = ''
+  spec.summary       = 'Fail your CI when your code becomes stinky'
+  spec.homepage      = 'https://github.com/ChalkSchools/stink-bomb'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")

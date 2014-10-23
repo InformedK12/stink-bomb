@@ -1,9 +1,12 @@
 # StinkBomb
 
+[![Gem Version](https://badge.fury.io/rb/stink-bomb.svg)](http://badge.fury.io/rb/stink-bomb)
 [![Build Status](https://travis-ci.org/ChalkSchools/stink-bomb.svg?branch=master)](https://travis-ci.org/ChalkSchools/stink-bomb)
 [![Coverage Status](https://img.shields.io/coveralls/ChalkSchools/stink-bomb.svg)](https://coveralls.io/r/ChalkSchools/stink-bomb?branch=master)
 
-TODO: Write a gem description
+Create a `StinkBomb` that will throw an error if your code is out of date.
+Useful for when you have code that should be addressed in the near future,
+and you want this code to fail CI when it gets too stinky.
 
 ## Installation
 
