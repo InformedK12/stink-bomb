@@ -8,7 +8,7 @@ class StinkBomb
 
     it 'does nothing if now + epsilon is given' do
       expect do
-        Bomb.new(Time.now + 1)
+        Bomb.new(Time.now.getlocal + 1)
       end.not_to raise_error
     end
 

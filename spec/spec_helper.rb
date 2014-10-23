@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require_relative '../lib/stink_bomb'
 
 RSpec.configure do |config|
