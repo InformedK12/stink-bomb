@@ -1,5 +1,9 @@
+require 'time'
 require 'stink_bomb/version'
+require 'stink_bomb/bomb'
 
-module StinkBomb
-  # Your code goes here...
+class StinkBomb
+  def self.create(datetime)
+    StinkBomb::Bomb.new(datetime)
+  end
 end
