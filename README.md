@@ -1,5 +1,8 @@
 # StinkBomb
 
+[![Build Status](https://travis-ci.org/ChalkSchools/stink-bomb.svg?branch=master)](https://travis-ci.org/ChalkSchools/stink-bomb)
+[![Coverage Status](https://img.shields.io/coveralls/ChalkSchools/stink-bomb.svg)](https://coveralls.io/r/ChalkSchools/stink-bomb?branch=master)
+
 TODO: Write a gem description
 
 ## Installation
