@@ -4,7 +4,7 @@ class StinkBomb
 
     def initialize(datetime)
       self.datetime = parse(datetime)
-      fail fail_message if !production? && DateTime.now > self.datetime
+      fail fail_message if !production? && past_datetime?
     end
 
     def parse(datetime)
@@ -22,6 +22,10 @@ class StinkBomb
 
     def production?
       ENV['RAILS_ENV'] == 'production' || ENV['RACK_ENV'] == 'production'
+    end
+
+    def past_datetime?
+      Time.now.getlocal.to_datetime > datetime
     end
   end
 end
