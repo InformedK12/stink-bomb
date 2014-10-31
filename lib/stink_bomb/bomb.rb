@@ -2,7 +2,7 @@ class StinkBomb
   class Bomb
     attr_accessor :datetime
 
-    def initialize(datetime, message = nil)
+    def initialize(datetime, message: nil)
       self.datetime = parse(datetime)
       fail (message || fail_message) if !production? && past_datetime?
     end

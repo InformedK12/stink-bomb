@@ -23,7 +23,7 @@ class StinkBomb
     it 'raises a custom message when specified' do
       yesterday = Date.today - 1
       expect do
-        Bomb.new(yesterday, 'Smells like poo')
+        Bomb.new(yesterday, message: 'Smells like poo')
       end.to raise_error(/Smells like poo/)
     end
 
