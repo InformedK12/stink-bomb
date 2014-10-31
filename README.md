@@ -1,6 +1,6 @@
 # StinkBomb
 
-[![Gem Version](https://badge.fury.io/rb/stink-bomb.svg)](http://badge.fury.io/rb/stink-bomb)
+[![Gem Version](https://badge.fury.io/rb/stink_bomb.svg)](http://badge.fury.io/rb/stink_bomb)
 [![Build Status](https://travis-ci.org/ChalkSchools/stink-bomb.svg?branch=master)](https://travis-ci.org/ChalkSchools/stink-bomb)
 [![Coverage Status](https://img.shields.io/coveralls/ChalkSchools/stink-bomb.svg)](https://coveralls.io/r/ChalkSchools/stink-bomb?branch=master)
 
@@ -13,7 +13,7 @@ and you want this code to fail CI when it gets too stinky.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'stink-bomb'
+gem 'stink_bomb'
 ```
 
 And then execute:
@@ -22,7 +22,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install stink-bomb
+    $ gem install stink_bomb
 
 ## Usage
 

@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'stink_bomb/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'stink-bomb'
+  spec.name          = 'stink_bomb'
   spec.version       = StinkBomb::VERSION
   spec.authors       = ['Holman Gao']
   spec.email         = ['holman@golmansax.com']

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in stink-bomb.gemspec
+# Specify your gem's dependencies in stink_bomb.gemspec
 gemspec
 
 group :development, :test do
