@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
+  gem 'simplecov'
   gem 'coveralls'
   gem 'rake'
   gem 'travis'
