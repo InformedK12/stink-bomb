@@ -1,31 +1,31 @@
 class StinkBomb
   class Bomb
-    attr_accessor :datetime
+    attr_accessor :time
 
-    def initialize(datetime, message: nil)
-      self.datetime = parse(datetime)
-      fail (message || fail_message) if !production? && past_datetime?
+    def initialize(time, message: nil)
+      self.time = parse(time)
+      fail (message || fail_message) if !production? && past_time?
     end
 
-    def parse(datetime)
-      datetime = DateTime.parse(datetime) if datetime.is_a?(String)
-      unless datetime.respond_to?(:to_datetime)
+    def parse(time)
+      time = Time.parse(time) if time.is_a?(String)
+      unless time.respond_to?(:to_time)
         fail 'Parameter has to be a Time, Date, or a String'
       end
 
-      datetime.to_datetime
+      time.to_time
     end
 
     def fail_message
-      "Your code stinks! It was supposed to be fixed by #{datetime}"
+      "Your code stinks! It was supposed to be fixed by #{time}"
     end
 
     def production?
       ENV['RAILS_ENV'] == 'production' || ENV['RACK_ENV'] == 'production'
     end
 
-    def past_datetime?
-      Time.now.getlocal.to_datetime > datetime
+    def past_time?
+      Time.now.utc > time.utc
     end
   end
 end
