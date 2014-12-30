@@ -2,8 +2,8 @@ describe StinkBomb do
   describe '.create' do
     it 'creates an instance of Bomb with the parameters' do
       receive_expected = receive(:new).with('01/01/2100', message: nil)
-      expect(StinkBomb::Bomb).to receive_expected.and_call_original
-      expect_any_instance_of(StinkBomb::Bomb).to receive(:trigger)
+      expect(StinkBomb::RaiseBomb).to receive_expected.and_call_original
+      expect_any_instance_of(StinkBomb::RaiseBomb).to receive(:trigger)
       StinkBomb.create('01/01/2100')
     end
   end
