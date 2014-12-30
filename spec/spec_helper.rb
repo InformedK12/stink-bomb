@@ -1,9 +1,11 @@
 require 'simplecov'
-require 'coveralls'
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
-]
+if ENV['CI']
+  require 'coveralls'
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
+  ]
+end
 SimpleCov.start { add_filter '/spec/' }
 
 require_relative '../lib/stink_bomb'
