@@ -1,5 +1,5 @@
 module StinkBomb
-  class Bomb
+  class RaiseBomb
     attr_accessor :time
     attr_writer :message
 

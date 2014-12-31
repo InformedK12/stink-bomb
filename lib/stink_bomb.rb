@@ -1,11 +1,11 @@
 require 'time'
 require 'stink_bomb/version'
 require 'stink_bomb/configuration'
-require 'stink_bomb/bomb'
+require 'stink_bomb/raise_bomb'
 
 module StinkBomb
   def self.create(datetime, message: nil)
-    StinkBomb::Bomb.new(datetime, message: message).trigger
+    StinkBomb::RaiseBomb.new(datetime, message: message).trigger
   end
 
   def self.configuration
@@ -13,7 +13,7 @@ module StinkBomb
   end
 
   def self.configure
-    yield configuration if block_given?
+    yield configuration
   end
 
   def self.reset
