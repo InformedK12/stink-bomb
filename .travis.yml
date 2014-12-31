@@ -1,6 +1,8 @@
+sudo: false
 language: ruby
 rvm:
   - 2.1.3
 script:
   - bundle exec travis lint --skip-completion-check
   - bundle exec rspec
+  - bundle exec rubocop -D
