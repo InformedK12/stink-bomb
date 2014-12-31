@@ -3,14 +3,17 @@ module StinkBomb
     attr_accessor :time
     attr_writer :message
 
-    def initialize(time, message: nil)
-      self.time = parse(time)
-      self.message = message || StinkBomb.configuration.message
+    def initialize(error_class: StinkyCodeError)
+      @error_class = error_class
     end
 
-    def trigger
-      fail message if !production? && past_time?
+    def trigger(time, message: StinkBomb.configuration.message)
+      self.time = parse(time)
+
+      fail error(message) if !production? && past_time?
     end
+
+  private
 
     def parse(time)
       time = Time.parse(time) if time.is_a?(String)
@@ -29,8 +32,8 @@ module StinkBomb
       Time.now.utc > time.utc
     end
 
-    def message
-      @message.gsub('{time}', time.to_s)
+    def error(message)
+      @error_class.new(message.gsub('{time}', time.to_s))
     end
   end
 end
