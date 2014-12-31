@@ -4,8 +4,10 @@ require 'stink_bomb/configuration'
 require 'stink_bomb/raise_bomb'
 
 module StinkBomb
+  class StinkyCodeError < StandardError; end
+
   def self.create(datetime, message: nil)
-    StinkBomb::RaiseBomb.new(datetime, message: message).trigger
+    StinkBomb::RaiseBomb.new.trigger(datetime, message: message)
   end
 
   def self.configuration
