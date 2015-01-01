@@ -34,14 +34,6 @@ module StinkBomb
       end.not_to raise_error
     end
 
-    it 'does not raise an error in production' do
-      expect(ENV).to receive(:[]).with('RAILS_ENV').and_return('production')
-
-      expect do
-        raise_bomb.trigger(Date.today - 1)
-      end.not_to raise_error
-    end
-
     it 'raises a custom message when specified' do
       yesterday = Date.today - 1
       expect do

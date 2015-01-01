@@ -10,7 +10,7 @@ module StinkBomb
     def trigger(time, message: StinkBomb.configuration.message)
       self.time = parse(time)
 
-      fail error(message) if !production? && past_time?
+      fail error(message) if past_time?
     end
 
   private
@@ -22,10 +22,6 @@ module StinkBomb
       end
 
       time.to_time
-    end
-
-    def production?
-      ENV['RAILS_ENV'] == 'production' || ENV['RACK_ENV'] == 'production'
     end
 
     def past_time?
