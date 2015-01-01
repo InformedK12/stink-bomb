@@ -1,9 +1,9 @@
 require 'simplecov'
 if ENV['CI']
-  require 'coveralls'
+  require 'codeclimate-test-reporter'
   SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
     SimpleCov::Formatter::HTMLFormatter,
-    Coveralls::SimpleCov::Formatter
+    CodeClimate::TestReporter::Formatter
   ]
 end
 SimpleCov.minimum_coverage 100

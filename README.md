@@ -2,7 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/stink_bomb.svg)](http://badge.fury.io/rb/stink_bomb)
 [![Build Status](https://travis-ci.org/ChalkSchools/stink-bomb.svg?branch=master)](https://travis-ci.org/ChalkSchools/stink-bomb)
-[![Coverage Status](https://img.shields.io/coveralls/ChalkSchools/stink-bomb.svg)](https://coveralls.io/r/ChalkSchools/stink-bomb?branch=master)
+[![Code Climate](https://codeclimate.com/github/ChalkSchools/stink-bomb/badges/gpa.svg)](https://codeclimate.com/github/ChalkSchools/stink-bomb)
+[![Test Coverage](https://codeclimate.com/github/ChalkSchools/stink-bomb/badges/coverage.svg)](https://codeclimate.com/github/ChalkSchools/stink-bomb)
 
 Create a `StinkBomb` that will throw an error if your code is out of date.
 Useful for when you have code that should be addressed in the near future,
