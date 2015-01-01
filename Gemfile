@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
-  gem 'coveralls', '~> 0.7.2'
+  gem 'codeclimate-test-reporter', '~> 0.4.4'
   gem 'guard-rspec', '~> 4.5.0'
   gem 'guard-rubocop', '~> 1.2.0'
   gem 'rake', '~> 10.4.2'
