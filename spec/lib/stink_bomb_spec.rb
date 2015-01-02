@@ -2,21 +2,35 @@ describe StinkBomb do
   describe '.create' do
     let(:configuration) { StinkBomb.configuration }
 
-    context 'when there are bombs configured' do
-      it 'triggers the configured bombs' do
-        configuration.raise = true
-        expect do
-          StinkBomb.create('01/01/1900')
-        end.to raise_error(StinkBomb::StinkyCodeError)
-      end
+    it 'triggers the configured bombs when there are bombs configured' do
+      configuration.raise = true
+      expect do
+        StinkBomb.create('01/01/1900')
+      end.to raise_error(StinkBomb::StinkyCodeError)
     end
 
-    context 'when there are no bombs triggered' do
-      it 'does nothing' do
-        expect do
-          StinkBomb.create('01/01/1900')
-        end.not_to raise_error
-      end
+    it 'does nothing when there are no bombs triggered' do
+      expect { StinkBomb.create('01/01/1900') }.not_to raise_error
+    end
+
+    it 'accepts a date object' do
+      configuration.raise = true
+      expect do
+        StinkBomb.create(Date.today - 1)
+      end.to raise_error(StinkBomb::StinkyCodeError)
+    end
+
+    it 'accepts a time object' do
+      configuration.raise = true
+      expect do
+        StinkBomb.create(Time.now.getlocal - 86_400)
+      end.to raise_error(StinkBomb::StinkyCodeError)
+    end
+
+    it 'raises an error if the time is not a date or a string' do
+      expect do
+        StinkBomb.create(1)
+      end.to raise_error('Parameter has to be a Time, Date, or a String')
     end
   end
 

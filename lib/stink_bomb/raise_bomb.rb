@@ -9,21 +9,12 @@ module StinkBomb
 
     def trigger(time, message: nil)
       message ||= StinkBomb.configuration.message
-      self.time = parse(time)
+      self.time = time
 
       fail error(message) if past_time?
     end
 
   private
-
-    def parse(time)
-      time = Time.parse(time) if time.is_a?(String)
-      unless time.respond_to?(:to_time)
-        fail 'Parameter has to be a Time, Date, or a String'
-      end
-
-      time.to_time
-    end
 
     def past_time?
       Time.now.utc > time.utc
