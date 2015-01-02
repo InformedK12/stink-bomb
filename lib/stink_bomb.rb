@@ -7,9 +7,9 @@ module StinkBomb
   class StinkyCodeError < StandardError; end
 
   class << self
-    def create(time, message: nil)
-      time = parse(time)
-      bombs.each { |bomb| bomb.trigger(time, message: message) }
+    def create(deadline, message: nil)
+      deadline = parse(deadline)
+      bombs.each { |bomb| bomb.trigger(deadline, message: message) }
     end
 
     def configuration
