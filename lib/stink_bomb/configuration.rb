@@ -30,7 +30,7 @@ module StinkBomb
     end
 
     def default_message
-      'Your code stinks! It was supposed to be fixed by {time}'
+      'Your code stinks! It was supposed to be fixed by {deadline}'
     end
   end
 end

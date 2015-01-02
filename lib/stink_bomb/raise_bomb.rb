@@ -1,27 +1,27 @@
 module StinkBomb
   class RaiseBomb
-    attr_accessor :time
+    attr_accessor :deadline
     attr_writer :message
 
     def initialize(error_class: StinkyCodeError)
       @error_class = error_class
     end
 
-    def trigger(time, message: nil)
+    def trigger(deadline, message: nil)
       message ||= StinkBomb.configuration.message
-      self.time = time
+      self.deadline = deadline
 
-      fail error(message) if past_time?
+      fail error(message) if past_deadline?
     end
 
   private
 
-    def past_time?
-      Time.now.utc > time.utc
+    def past_deadline?
+      Time.now.utc > deadline.utc
     end
 
     def error(message)
-      @error_class.new(message.gsub('{time}', time.to_s))
+      @error_class.new(message.gsub('{deadline}', deadline.to_s))
     end
   end
 end
