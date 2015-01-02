@@ -8,7 +8,7 @@ module StinkBomb
 
   class << self
     def create(datetime, message: nil)
-      StinkBomb::RaiseBomb.new.trigger(datetime, message: message)
+      bombs.each { |bomb| bomb.trigger(datetime, message: message) }
     end
 
     def configuration
@@ -21,6 +21,10 @@ module StinkBomb
 
     def reset
       @configuration = nil
+    end
+
+    def bombs
+      configuration.bombs
     end
   end
 end

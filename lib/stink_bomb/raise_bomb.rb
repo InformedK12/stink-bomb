@@ -7,7 +7,8 @@ module StinkBomb
       @error_class = error_class
     end
 
-    def trigger(time, message: StinkBomb.configuration.message)
+    def trigger(time, message: nil)
+      message ||= StinkBomb.configuration.message
       self.time = parse(time)
 
       fail error(message) if past_time?

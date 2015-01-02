@@ -1,10 +1,22 @@
 describe StinkBomb do
   describe '.create' do
-    it 'creates an instance of Bomb with the parameters' do
-      bomb_class = StinkBomb::RaiseBomb
-      receive_expected = receive(:trigger).with('01/01/2100', message: nil)
-      expect_any_instance_of(bomb_class).to receive_expected.and_call_original
-      StinkBomb.create('01/01/2100')
+    let(:configuration) { StinkBomb.configuration }
+
+    context 'when there are bombs configured' do
+      it 'triggers the configured bombs' do
+        configuration.raise = true
+        expect do
+          StinkBomb.create('01/01/1900')
+        end.to raise_error(StinkBomb::StinkyCodeError)
+      end
+    end
+
+    context 'when there are no bombs triggered' do
+      it 'does nothing' do
+        expect do
+          StinkBomb.create('01/01/1900')
+        end.not_to raise_error
+      end
     end
   end
 
