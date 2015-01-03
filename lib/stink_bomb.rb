@@ -9,6 +9,7 @@ module StinkBomb
   class << self
     def create(deadline, message: nil)
       deadline = parse(deadline)
+      message = fill_in_message(deadline, message)
       bombs.each { |bomb| bomb.trigger(deadline, message: message) }
     end
 
@@ -27,17 +28,25 @@ module StinkBomb
     def bombs
       configuration.bombs
     end
-  end
 
-private
+  private
 
-  def self.parse(time)
-    if time.is_a?(String)
-      Time.parse(time)
-    elsif time.respond_to?(:to_time)
-      time.to_time
-    else
-      fail 'Parameter has to be a Time, Date, or a String'
+    def fill_in_message(deadline, message)
+      (message || configured_message).gsub('{deadline}', deadline.to_s)
+    end
+
+    def configured_message
+      StinkBomb.configuration.message
+    end
+
+    def parse(time)
+      if time.is_a?(String)
+        Time.parse(time)
+      elsif time.respond_to?(:to_time)
+        time.to_time
+      else
+        fail 'Parameter has to be a Time, Date, or a String'
+      end
     end
   end
 end

@@ -1,6 +1,7 @@
 describe StinkBomb do
   describe '.create' do
     let(:configuration) { StinkBomb.configuration }
+    let(:yesterday) { (Date.today - 1).to_time }
 
     it 'triggers the configured bombs when there are bombs configured' do
       configuration.raise = true
@@ -16,7 +17,7 @@ describe StinkBomb do
     it 'accepts a date object' do
       configuration.raise = true
       expect do
-        StinkBomb.create(Date.today - 1)
+        StinkBomb.create(yesterday)
       end.to raise_error(StinkBomb::StinkyCodeError)
     end
 
@@ -31,6 +32,22 @@ describe StinkBomb do
       expect do
         StinkBomb.create(1)
       end.to raise_error('Parameter has to be a Time, Date, or a String')
+    end
+
+    it 'raises an error if the given date is after today' do
+      configuration.raise = true
+      yesterday_string = Regexp.quote(yesterday.to_s)
+      expect do
+        StinkBomb.create(yesterday)
+      end.to raise_error(/It was supposed to be fixed by #{yesterday_string}/)
+    end
+
+    it 'raises a custom message when specified' do
+      configuration.raise = true
+      yesterday_string = Regexp.quote(yesterday.to_s)
+      expect do
+        StinkBomb.create(yesterday, message: '{deadline} Smells like poo')
+      end.to raise_error(/#{yesterday_string} Smells like poo/)
     end
   end
 
