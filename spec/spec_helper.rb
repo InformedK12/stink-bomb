@@ -5,8 +5,8 @@ if ENV['CI']
     SimpleCov::Formatter::HTMLFormatter,
     CodeClimate::TestReporter::Formatter
   ]
+  SimpleCov.minimum_coverage 100
 end
-SimpleCov.minimum_coverage 100
 SimpleCov.start { add_filter '/spec/' }
 
 require_relative '../lib/stink_bomb'
