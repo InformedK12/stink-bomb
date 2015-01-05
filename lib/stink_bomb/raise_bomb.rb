@@ -1,5 +1,5 @@
 module StinkBomb
-  class RaiseBomb
+  class RaiseBomb < Bomb
     attr_accessor :deadline
     attr_writer :message
 
@@ -11,12 +11,6 @@ module StinkBomb
       self.deadline = deadline
 
       fail @error_class, message if past_deadline?
-    end
-
-  private
-
-    def past_deadline?
-      Time.now.utc > deadline.utc
     end
   end
 end

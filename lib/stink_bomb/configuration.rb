@@ -15,6 +15,15 @@ module StinkBomb
       end
     end
 
+    def logger=(logger)
+      remove_bomb(LoggerBomb)
+      if logger == true
+        add_bomb(LoggerBomb.new)
+      elsif logger
+        add_bomb(LoggerBomb.new(logger))
+      end
+    end
+
     def bombs
       @bombs ||= []
     end
