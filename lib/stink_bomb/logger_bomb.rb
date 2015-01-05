@@ -9,9 +9,7 @@ module StinkBomb
     end
 
     def trigger(deadline, message:)
-      self.deadline = deadline
-
-      @logger.info(message) if past_deadline?
+      @logger.info(message) if past_deadline?(deadline)
     end
   end
 end

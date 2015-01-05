@@ -1,6 +1,5 @@
 module StinkBomb
   class RaiseBomb < Bomb
-    attr_accessor :deadline
     attr_writer :message
 
     def initialize(error_class: StinkyCodeError)
@@ -8,9 +7,7 @@ module StinkBomb
     end
 
     def trigger(deadline, message:)
-      self.deadline = deadline
-
-      fail @error_class, message if past_deadline?
+      fail @error_class, message if past_deadline?(deadline)
     end
   end
 end
