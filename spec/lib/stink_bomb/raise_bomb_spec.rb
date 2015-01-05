@@ -4,7 +4,7 @@ module StinkBomb
     let(:yesterday) { (Date.today - 1).to_time }
 
     it 'accepts an error class to raise' do
-      raise_bomb = RaiseBomb.new(error_class: StinkyTestError)
+      raise_bomb = RaiseBomb.new(StinkyTestError)
       expect do
         raise_bomb.trigger(yesterday, message: message)
       end.to raise_error(StinkyTestError, /Your code stinks!/)

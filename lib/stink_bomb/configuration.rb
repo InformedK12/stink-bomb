@@ -7,21 +7,11 @@ module StinkBomb
     end
 
     def raise=(error_class)
-      remove_bomb(RaiseBomb)
-      if error_class == true
-        add_bomb(RaiseBomb.new)
-      elsif error_class
-        add_bomb(RaiseBomb.new(error_class: error_class))
-      end
+      configure_bomb(RaiseBomb, error_class)
     end
 
     def logger=(logger)
-      remove_bomb(LoggerBomb)
-      if logger == true
-        add_bomb(LoggerBomb.new)
-      elsif logger
-        add_bomb(LoggerBomb.new(logger))
-      end
+      configure_bomb(LoggerBomb, logger)
     end
 
     def bombs
@@ -30,8 +20,13 @@ module StinkBomb
 
   private
 
-    def add_bomb(bomb)
-      bombs << bomb
+    def configure_bomb(bomb_type, bomb_arg)
+      remove_bomb(bomb_type)
+      if bomb_arg == true
+        bombs << bomb_type.new
+      elsif bomb_arg
+        bombs << bomb_type.new(bomb_arg)
+      end
     end
 
     def remove_bomb(bomb_class)
