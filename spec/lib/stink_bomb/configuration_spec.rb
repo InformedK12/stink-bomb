@@ -34,4 +34,34 @@ module StinkBomb
       end.to raise_error(StinkyTestError)
     end
   end
+
+  describe Configuration, '#logger=' do
+    let(:configuration) { StinkBomb::Configuration.new }
+    let(:message) { configuration.message }
+    let(:fake_logger) { double(info: 'foo') }
+    let(:yesterday) { (Date.today - 1).to_time }
+
+    it 'removes any logger bombs when given false' do
+      configuration.bombs << RaiseBomb.new
+      configuration.bombs << LoggerBomb.new(fake_logger)
+      configuration.logger = false
+      expect(configuration.bombs.length).to eq 1
+      expect(configuration.bombs.first).to be_a RaiseBomb
+    end
+
+    it 'adds a bomb that logs to the rails logger' do
+      stub_const('Rails', double(logger: fake_logger))
+      configuration.logger = true
+      configuration.bombs.first.trigger(yesterday, message: message)
+
+      expect(fake_logger).to have_received(:info).with(/Your code stinks!/)
+    end
+
+    it 'adds a bomb that logs to a custom logger' do
+      configuration.logger = fake_logger
+      configuration.bombs.first.trigger(yesterday, message: message)
+
+      expect(fake_logger).to have_received(:info).with(/Your code stinks!/)
+    end
+  end
 end

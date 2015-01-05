@@ -1,7 +1,9 @@
 require 'time'
 require 'stink_bomb/version'
 require 'stink_bomb/configuration'
+require 'stink_bomb/bomb'
 require 'stink_bomb/raise_bomb'
+require 'stink_bomb/logger_bomb'
 
 module StinkBomb
   class StinkyCodeError < StandardError; end
