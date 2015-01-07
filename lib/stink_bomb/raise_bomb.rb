@@ -2,7 +2,7 @@ module StinkBomb
   class RaiseBomb < Bomb
     attr_writer :message
 
-    def initialize(error_class: StinkyCodeError)
+    def initialize(error_class = StinkyCodeError)
       @error_class = error_class
     end
 
